@@ -13,15 +13,22 @@ import os.path
 import subprocess
 import sys
 import time
+import traceback
 
 
 
 # Config Settings
-NODES = ('52.212.250.133:11211') 
+NODES = ('54.212.250.133:11211',) 
 INTERVAL = 60  # secs
-STATS = (('curr_items', 'GAUGE'), ('bytes_written', 'DERIVE'))  # (stat name, rrd datasource type)
+STATS = (
+    ('get_hits', 'GAUGE'),
+    ('get_misses', 'GAUGE'),
+    ('evictions', 'GAUGE'),
+    ('bytes_written', 'DERIVE'),
+    ('curr_connections', 'GAUGE')
+)  # (stat name, rrd datasource type)
 GRAPH_MINS = (60, 180)  # timespans for graph/png files
-GRAPH_DIR = '/var/www/fakingmonkey'  # output directory
+GRAPH_DIR = '/var/www/fakingmonkey/'  # output directory
 
 
 
@@ -31,8 +38,10 @@ def main():
     try:
         mc = memcache.Client(NODES)
         all_stats = mc.get_stats()
+        print all_stats
     except Exception:
         print time.strftime('%Y/%m/%d %H:%M:%S', time.localtime()), 'error'
+        traceback.print_exc()
         sys.exit(1)
         
     for node_stats in all_stats:
