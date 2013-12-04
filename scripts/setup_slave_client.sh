@@ -14,9 +14,9 @@ sudo pip install python-memcached
 
 # Install FakingMonkey
 echo "INSTALLING FAKINGMONKEY"
-rm -r FakingMonkey-deploy
+sudo rm -r FakingMonkey-deploy
 sudo apt-get -y -q install unzip
-rm deploy.zip
+sudo rm deploy.zip
 wget https://github.com/djmailhot/FakingMonkey/archive/deploy.zip
 unzip deploy.zip
 

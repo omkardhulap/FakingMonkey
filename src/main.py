@@ -10,6 +10,7 @@ import locust_templates as templates
 import config
 
 
+logging.basicConfig()
 log = logging.getLogger('FakingMonkeyMain')
 log.setLevel('INFO')
 
