@@ -29,7 +29,7 @@ def start_monkey():
     #locust_args.append('--clients=%d' % (config.op_rate))
     locust_args.append('--clients=%d' % (1))
     locust_args.append('--hatch-rate=%d' % (1))
-    locust_args.append('--num-request=%d' % (100))
+    locust_args.append('--num-request=%d' % (100000))
     # Override the command line args
     sys.argv = locust_args
 

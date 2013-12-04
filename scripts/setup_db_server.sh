@@ -21,4 +21,4 @@ mysql -u root --password="B8B274C6AF8165B631B4B517BD0ED2694909F464" -e 'GRANT AL
 mysql -u root --password="B8B274C6AF8165B631B4B517BD0ED2694909F464" -e 'CREATE USER newrelic@"%" IDENTIFIED BY "penguin";'
 mysql -u root --password="B8B274C6AF8165B631B4B517BD0ED2694909F464" -e 'GRANT PROCESS,REPLICATION CLIENT ON *.* TO newrelic@"%";'
 
-service mysql restart
+sudo service mysql restart

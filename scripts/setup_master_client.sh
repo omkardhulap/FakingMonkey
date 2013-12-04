@@ -31,6 +31,8 @@ nrsysmond-config --set license_key=846a0af02ab8542c0b6f81256bd7cc127f4b8546
 # Initialize this node as a newrelic server
 pip install newrelic
 newrelic-admin generate-config 846a0af02ab8542c0b6f81256bd7cc127f4b8546 newrelic.ini
+sed -i 's/Python Application/FakingMonkey/' newrelic.ini
+mv newrelic.ini /etc/newrelic/
 
 
 # Installing mysql monitoring
@@ -58,8 +60,8 @@ popd
 
 # Setup the FakingMonkey deployment to use newrelic
 echo "STARTING UP FAKINGMONKEY"
-NEW_RELIC_CONFIG_FILE=newrelic.ini
+NEW_RELIC_CONFIG_FILE=/etc/newrelic/newrelic.ini
 export NEW_RELIC_CONFIG_FILE
 pushd FakingMonkey-deploy/src
-newrelic-admin run-python main.py
+# newrelic-admin run-python main.py
 popd
