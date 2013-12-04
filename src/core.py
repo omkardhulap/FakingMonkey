@@ -7,7 +7,6 @@ import time
 import config
 
 
-logging.basicConfig()
 log = logging.getLogger('FakingMonkeyCore')
 log.setLevel('INFO')
 

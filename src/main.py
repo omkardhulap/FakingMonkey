@@ -2,6 +2,7 @@
 import sys
 import argparse
 import logging
+import math
 
 from locust import main, TaskSet
 
@@ -10,7 +11,6 @@ import locust_templates as templates
 import config
 
 
-logging.basicConfig()
 log = logging.getLogger('FakingMonkeyMain')
 log.setLevel('INFO')
 
@@ -28,7 +28,7 @@ def start_monkey():
     locust_args.append('--locustfile=%s' % ('locust_templates.py'))
     locust_args.append('--no-web')
     #locust_args.append('--clients=%d' % (config.op_rate))
-    locust_args.append('--clients=%d' % (1))
+    locust_args.append('--clients=%d' % (math.ceil(config.op_rate / 1000.0)))
     locust_args.append('--hatch-rate=%d' % (1))
     locust_args.append('--num-request=%d' % (100000))
     # Override the command line args

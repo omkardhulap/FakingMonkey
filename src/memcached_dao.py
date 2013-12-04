@@ -7,7 +7,6 @@ import MySQLdb as sql
 import config
 
 
-logging.basicConfig()
 log = logging.getLogger('FakingMonkeyDAO')
 log.setLevel('INFO')
 
