@@ -7,13 +7,13 @@ import time
 import config
 
 
-log = logging.getLogger('FakingMonkeyCore')
-log.setLevel('INFO')
+#log = logging.getLogger('FakingMonkeyCore')
+#log.setLevel('INFO')
 
 class StringGenerator:
 
     def __init__(self):
-        log.info("Init StringGenerator")
+        #log.info("Init StringGenerator")
         self.chars = string.letters + string.digits
         self.mu = random.randint(0, len(self.chars) - 1)
         self.sigma = 0.1 + (config.key_skew * len(self.chars) / 3.0)
@@ -36,6 +36,6 @@ class StringGenerator:
             index = -1
             while index < 0 or index >= len(self.chars):
                 index = int(round(random.gauss(self.mu, self.sigma)))
-                log.debug("Generated index {}".format(index))
+                #log.debug("Generated index {}".format(index))
             char = self.chars[index]
             return char

@@ -14,7 +14,7 @@ rw_ratio = 0.5
 # operation rate
 op_rate = 1000
 # skew of key accesses
-key_skew = 1.0
+key_skew = 0.9
 # size in bytes of keys
 key_size = 64
 # size in bytes of values

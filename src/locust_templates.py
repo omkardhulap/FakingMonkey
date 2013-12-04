@@ -1,5 +1,6 @@
 import time
 from requests import Response
+import math
 
 from locust.clients import ResponseContextManager
 from locust import Locust, TaskSet, task
@@ -66,5 +67,5 @@ class WorkloadClient(Locust):
 
     def __init__(self):
         super(Locust, self).__init__()
-        self.min_wait = 1000 / config.op_rate
-        self.max_wait = 1000 / config.op_rate
+        self.min_wait = math.ceil(1000.0 / config.op_rate)
+        self.max_wait = math.ceil(1000.0 / config.op_rate)

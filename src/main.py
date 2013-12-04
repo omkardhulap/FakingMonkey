@@ -11,8 +11,8 @@ import locust_templates as templates
 import config
 
 
-log = logging.getLogger('FakingMonkeyMain')
-log.setLevel('INFO')
+#log = logging.getLogger('FakingMonkeyMain')
+#log.setLevel('INFO')
 
 def start_monkey():
     '''
@@ -36,7 +36,7 @@ def start_monkey():
 
 
     # Finally start the locust system
-    log.info("Starting FakingMonkey")
+    #log.info("Starting FakingMonkey")
     main.main()
 
 
@@ -76,7 +76,7 @@ def monkey_main():
 
     check_valid_config()
 
-    MemcachedDao.initialize_database()
+    #MemcachedDao.initialize_database()
 
     start_monkey()
 
