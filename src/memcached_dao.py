@@ -19,28 +19,9 @@ class MemcachedDao:
         log.info("Initializing database connection")
         self.con = sql.connect(host=config.db_server_addr,
                                port=3306,
+                               db='fakingmonkey',
                                user='root',
                                passwd='penguin')
-
-        cursor = self.con.cursor()
-
-        query = "CREATE DATABASE IF NOT EXISTS fakingmonkey;"
-        cursor.execute(query)
-
-        query = "USE fakingmonkey;"
-        cursor.execute(query)
-
-        query = "DROP TABLE IF EXISTS kvstore;"
-        cursor.execute(query)
-
-        query = ("CREATE TABLE kvstore(" \
-                 "k VARCHAR({}) NOT NULL, " \
-                 "v VARCHAR({}), " \
-                 "PRIMARY KEY ( k ), " \
-                 "UNIQUE ( k ));".format(config.key_size, config.value_size))
-        cursor.execute(query)
-
-        # prepopulate backend DB with keys
 
 
     def get(self, key):
@@ -82,3 +63,37 @@ class MemcachedDao:
             self.con.close()
         except AttributeError:
             pass
+
+
+    @staticmethod
+    def initialize_database():
+        log.info("INITIALIZING DATABASE")
+        con = sql.connect(host=config.db_server_addr,
+                               port=3306,
+                               db='fakingmonkey',
+                               user='root',
+                               passwd='penguin')
+        try:
+            cursor = con.cursor()
+
+            log.debug("Creating database")
+            query = "CREATE DATABASE IF NOT EXISTS fakingmonkey;"
+            cursor.execute(query)
+
+            query = "USE fakingmonkey;"
+            cursor.execute(query)
+
+            log.debug("Creating table")
+            query = "DROP TABLE IF EXISTS kvstore;"
+            cursor.execute(query)
+
+            query = ("CREATE TABLE kvstore(" \
+                     "k VARCHAR({}) NOT NULL, " \
+                     "v VARCHAR({}), " \
+                     "PRIMARY KEY ( k ), " \
+                     "UNIQUE ( k ));".format(config.key_size, config.value_size))
+            cursor.execute(query)
+        except Exception as ex:
+            raise ex
+        finally:
+            con.close()

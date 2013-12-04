@@ -5,6 +5,7 @@ import logging
 
 from locust import main, TaskSet
 
+from memcached_dao import MemcachedDao
 import locust_templates as templates
 import config
 
@@ -25,7 +26,8 @@ def start_monkey():
     locust_args.append('--host=%s' % ('localhost'))
     locust_args.append('--locustfile=%s' % ('locust_templates.py'))
     locust_args.append('--no-web')
-    locust_args.append('--clients=%d' % (config.op_rate))
+    #locust_args.append('--clients=%d' % (config.op_rate))
+    locust_args.append('--clients=%d' % (1))
     locust_args.append('--hatch-rate=%d' % (1))
     locust_args.append('--num-request=%d' % (100))
     # Override the command line args
@@ -72,6 +74,8 @@ def monkey_main():
     set_config(args)
 
     check_valid_config()
+
+    MemcachedDao.initialize_database()
 
     start_monkey()
 
