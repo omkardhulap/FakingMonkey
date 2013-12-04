@@ -8,7 +8,7 @@ import config
 
 
 log = logging.getLogger('FakingMonkeyDAO')
-log.setLevel('DEBUG')
+log.setLevel('INFO')
 
 class MemcachedDao:
 
@@ -44,7 +44,7 @@ class MemcachedDao:
 
 
     def get(self, key):
-        log.info("get key {}".format(key))
+        log.debug("get key {}".format(key))
         value = self.mc.get(key)
         if not value:
             value = self._sql_get(key)
@@ -63,7 +63,7 @@ class MemcachedDao:
 
 
     def set(self, key, value):
-        log.info("set key {} as value {}".format(key, value))
+        log.debug("set key {} as value {}".format(key, value))
         self._sql_set(key, value)
         self.mc.set(key, value)
 

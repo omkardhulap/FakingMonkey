@@ -1,4 +1,5 @@
 
+import requests
 from locust import Locust, TaskSet, task
 
 import config
@@ -15,12 +16,18 @@ class KVAccessTasks(TaskSet):
     def read_task(self):
         key = self.generator.gen_key()
         value = self.dao.get(key)
+        r = requests.Response()
+        r.status_code = 200
+        return r
 
     @task(int((1.0 - config.rw_ratio) * 1000))
     def write_task(self):
         key = self.generator.gen_key()
         value = self.generator.gen_value()
         self.dao.set(key, value)
+        r = requests.Response()
+        r.status_code = 200
+        return r
 
 
 

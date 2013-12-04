@@ -9,24 +9,8 @@ import locust_templates as templates
 import config
 
 
-log = logging.getLogger('FakingMonkeyDAO')
-log.setLevel('DEBUG')
-
-def generate_locust_classes():
-    log.info("Generating workload definitions.")
-    # Build a dict of (classname, class object) pairs for available locusts
-    locusts = dict()
-    locust_template = templates.WorkloadClient
-    taskset_template = templates.KVAccessTasks
-
-
-    #locust = type("A", (locust_template,), {})
-    #locust.tasks = {taskset_template.read_task: 1, taskset_template.write_task: 1}
-
-    locusts["locust"] = locust_template
-
-    return locusts
-
+log = logging.getLogger('FakingMonkeyMain')
+log.setLevel('INFO')
 
 def start_monkey():
     '''
@@ -47,18 +31,6 @@ def start_monkey():
     # Override the command line args
     sys.argv = locust_args
 
-    '''
-    # Dynamically generate our locust classes
-    locusts = generate_locust_classes()
-
-    # Inject our locust classes
-    def find_locustfile_override(locustfile):
-        return True
-    def load_locustfile_override(path):
-        return None, locusts
-    main.find_locustfile = lambda locustfile: True
-    main.load_locustfile = load_locustfile_override
-    '''
 
     # Finally start the locust system
     log.info("Starting FakingMonkey")
