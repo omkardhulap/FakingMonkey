@@ -1,10 +1,10 @@
 
 # NODES
 kv_store_addr = [
-    '54.212.250.133:11211'
+    '54.203.245.120:11211'
 ]
 
-db_server_addr = '54.212.250.133'
+db_server_addr = '54.203.245.132'
 
 # PARAMETERS
 
