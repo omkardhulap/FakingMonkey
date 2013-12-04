@@ -24,13 +24,13 @@ class MemcachedDao:
 
         cursor = self.con.cursor()
 
-        query = ("CREATE DATABASE IF NOT EXISTS fakingmonkey;")
+        query = "CREATE DATABASE IF NOT EXISTS fakingmonkey;"
         cursor.execute(query)
 
-        query = ("USE fakingmonkey;")
+        query = "USE fakingmonkey;"
         cursor.execute(query)
 
-        query = ("DROP TABLE IF EXISTS kvstore;")
+        query = "DROP TABLE IF EXISTS kvstore;"
         cursor.execute(query)
 
         query = ("CREATE TABLE kvstore(" \

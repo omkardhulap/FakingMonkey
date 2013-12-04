@@ -3,10 +3,10 @@
 export DEBIAN_FRONTEND=noninteractive
 
 sudo apt-get -q -y update
+sudo apt-get -q -y install build-essential
 
 echo "INSTALLING PACKAGES"
 sudo apt-get -q -y install memcached
-sudo apt-get -q -y install build-essential
 
 
 #mysql_secure_installation
