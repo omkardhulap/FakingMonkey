@@ -13,7 +13,7 @@ sudo apt-get -q -y install memcached
 
 echo "ADJUSTING CONFIGURATION"
 sudo sed -i 's/-l/# -l/' /etc/memcached.conf
-sudo sed -i 's/-m 64/-m 3500/' /etc/memcached.conf
+sudo sed -i 's/-m 64/-m 64/' /etc/memcached.conf
 
 
 echo "RESTARTING SERVICES"
