@@ -1,20 +1,20 @@
 
 # NODES
 kv_store_addr = [
-    '54.203.44.230',
-    '54.245.30.178'
+    '54.203.245.42',
+    '54.203.246.67'
 ]
 
-db_server_addr = '54.203.245.132'
+db_server_addr = '54.203.246.92'
 
 # PARAMETERS
 
 # read/write ratio
-rw_ratio = 0.5
+rw_ratio = 0.0
 # operation rate
-op_rate = 1000
+op_rate = 5000
 # skew of key accesses
-key_skew = 0.9
+key_skew = 1.0
 # size in bytes of keys
 key_size = 64
 # size in bytes of values

@@ -70,7 +70,6 @@ class MemcachedDao:
         #log.info("INITIALIZING DATABASE")
         con = sql.connect(host=config.db_server_addr,
                                port=3306,
-                               db='fakingmonkey',
                                user='root',
                                passwd='penguin')
         try:

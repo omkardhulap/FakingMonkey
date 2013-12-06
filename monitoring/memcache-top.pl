@@ -102,7 +102,8 @@ $sleep = 3;
 
 # List of servers/ ports to query.
 @default_instances = (
-  '54.212.250.133:11211',
+  '54.203.245.42',
+  '54.203.246.67'
 );
 
 # Default port to connect to, if not specified
