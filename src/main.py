@@ -27,9 +27,9 @@ def start_monkey():
     locust_args.append('--host=%s' % ('localhost'))
     locust_args.append('--locustfile=%s' % ('locust_templates.py'))
     locust_args.append('--no-web')
-    locust_args.append('--clients=%d' % (config.op_rate))
-    #locust_args.append('--clients=%d' % (math.ceil(config.op_rate / 1000.0)))
-    locust_args.append('--hatch-rate=%d' % (1))
+    #locust_args.append('--clients=%d' % (config.op_rate))
+    locust_args.append('--clients=%d' % (math.ceil(config.op_rate / 1000.0)))
+    locust_args.append('--hatch-rate=%d' % (10))
     locust_args.append('--num-request=%d' % (100000))
     # Override the command line args
     sys.argv = locust_args
@@ -54,14 +54,14 @@ def check_valid_config():
 
 
 def set_config(params):
-    if 'rw-ratio' in params:
+    if 'rw_ratio' in params and params['rw_ratio'] != None:
         config.rw_ratio = params['rw_ratio']
-    if 'op-rate' in params:
-        config.op_rate = params['op-rate']
-    if 'key-skew' in params:
-        config.key_skew = params['key-skew']
-    if 'key-size' in params:
-        config.key_size = params['key-size']
+    if 'op_rate' in params and params['op_rate'] != None:
+        config.op_rate = params['op_rate']
+    if 'key_skew' in params and params['key_skew'] != None:
+        config.key_skew = params['key_skew']
+    if 'key_size' in params and params['key_size'] != None:
+        config.key_size = params['key_size']
 
 
 def monkey_main():
@@ -72,7 +72,7 @@ def monkey_main():
     parser.add_argument('--key-size', type=int, required=False, help='size in bytes of the keys')
 
     args = parser.parse_args()
-    set_config(args)
+    set_config(vars(args))
 
     check_valid_config()
 
