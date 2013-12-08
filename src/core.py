@@ -16,7 +16,7 @@ class StringGenerator:
         #log.info("Init StringGenerator")
         self.chars = string.letters + string.digits
         self.mu = random.randint(0, len(self.chars) - 1)
-        self.sigma = 0.1 + (config.key_skew * len(self.chars) / 3.0)
+        self.sigma = 0.1 + ((1.0 - config.key_skew) * len(self.chars) / 3.0)
 
     def gen_key(self):
         return self._gen_string(config.key_size)
