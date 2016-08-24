@@ -28,7 +28,7 @@ STATS = (
     ('curr_connections', 'GAUGE')
 )  # (stat name, rrd datasource type)
 GRAPH_MINS = (60, 180)  # timespans for graph/png files
-GRAPH_DIR = '/var/www/fakingmonkey/'  # output directory
+GRAPH_DIR = '/var/www/'  # output directory
 
 
 
