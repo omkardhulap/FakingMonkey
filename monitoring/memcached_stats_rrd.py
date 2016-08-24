@@ -18,7 +18,7 @@ import traceback
 
 
 # Config Settings
-NODES = ('127.0.0.1:11211',) 
+NODES = ('127.0.0.1:11211') 
 INTERVAL = 60  # secs
 STATS = (
     ('get_hits', 'GAUGE'),
