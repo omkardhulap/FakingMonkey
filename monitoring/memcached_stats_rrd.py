@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#  Corey Goldberg - 2010
+#  omkar dhualp 2016
 #    - monitors and graphs stats from memcached or membase
 #    - stores data in RRD (round-robin database)
 #    - generates .png images of plots/stats
@@ -18,7 +18,7 @@ import traceback
 
 
 # Config Settings
-NODES = ('54.212.250.133:11211',) 
+NODES = ('127.0.0.1:11211',) 
 INTERVAL = 60  # secs
 STATS = (
     ('get_hits', 'GAUGE'),
